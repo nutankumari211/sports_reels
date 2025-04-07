@@ -1,0 +1,7 @@
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rohit-sharma\rohit-sharma-1.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rohit-sharma\rohit-sharma-2.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rohit-sharma\rohit-sharma-3.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rohit-sharma\rohit-sharma-3.png'

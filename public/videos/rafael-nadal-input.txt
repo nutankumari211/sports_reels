@@ -1,0 +1,7 @@
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rafael-nadal\rafael-nadal-1.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rafael-nadal\rafael-nadal-2.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rafael-nadal\rafael-nadal-3.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\rafael-nadal\rafael-nadal-3.png'

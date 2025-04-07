@@ -1,0 +1,7 @@
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\mahendra-singh-dhoni\mahendra-singh-dhoni-1.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\mahendra-singh-dhoni\mahendra-singh-dhoni-2.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\mahendra-singh-dhoni\mahendra-singh-dhoni-3.png'
+duration 5
+file 'C:\Users\kains\OneDrive\Desktop\ai-sports-reels\public\images\mahendra-singh-dhoni\mahendra-singh-dhoni-3.png'
