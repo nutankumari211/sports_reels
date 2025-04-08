@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
-dotenv.config(); // if using .env
+dotenv.config();
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION!,
