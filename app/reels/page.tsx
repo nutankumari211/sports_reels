@@ -78,7 +78,11 @@ export default function ReelPage() {
             playsInline
             preload="none"
             data-index={index}
-            ref={(el) => (videoRefs.current[index] = el!)}
+            ref={(el) => {
+              if (el) {
+                videoRefs.current[index] = el;
+              }
+            }}
             className="h-full max-h-screen w-auto max-w-[100vw] object-cover aspect-[9/16] mx-auto"
           />
         </div>
