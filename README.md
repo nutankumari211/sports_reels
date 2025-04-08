@@ -4,6 +4,7 @@ This project auto-generates short-form video reels (like TikTok/Instagram Reels)
 How to use -> 
 1. npm install
 2. npm run dev
+3. localhost:3000/reels
 
 # Technical Breakdown
 1. Frontend (Next.js + Tailwind CSS)
