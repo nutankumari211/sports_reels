@@ -43,7 +43,7 @@ Use present tense. Add specific years or stats where known. Make it engaging for
     });
 
     const script = completion.choices[0]?.message?.content?.trim() || "";
-    const cleaned = cleanScript(script); // <--- Use here
+    const cleaned = cleanScript(script);
     scriptCache.set(cacheKey, cleaned);
     return cleaned;
   } catch (error: any) {
@@ -65,5 +65,5 @@ function getFallbackScript(playerName: string, sport: string): string {
 
 export function estimateDuration(script: string): number {
   const words = script.split(/\s+/).length;
-  return Math.ceil(words / 2.5); // ~150 wpm
+  return Math.ceil(words / 2.5);
 }
