@@ -9,7 +9,7 @@ export async function fetchVisuals({
 }: {
   playerName: string;
 }): Promise<{
-  allImages: string[]; // Relative local paths for FFmpeg
+  allImages: string[];
 }> {
   const wikipediaImage = await fetchFromWikipediaImage(playerName);
   const wikimediaImage = await fetchFromWikimedia(playerName);
@@ -75,10 +75,10 @@ async function fetchExtraWikimediaImages(playerName: string): Promise<string[]> 
           action: 'query',
           list: 'search',
           srsearch: playerName,
-          srnamespace: 6, // Image files only
+          srnamespace: 6,
           format: 'json',
           origin: '*',
-          srlimit: 20, // up to 20 files
+          srlimit: 20,
         }
       }
     );
@@ -111,7 +111,7 @@ async function fetchExtraWikimediaImages(playerName: string): Promise<string[]> 
 
     return imageUrls;
   } catch (err) {
-    console.error('🔴 Wikimedia fetch failed:', err);
+    console.error(' Wikimedia fetch failed:', err);
     return [];
   }
 }
