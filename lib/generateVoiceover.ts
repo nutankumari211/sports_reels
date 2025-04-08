@@ -13,7 +13,6 @@ const polly = new PollyClient({
 export async function generateVoiceover(script: string, filename: string): Promise<string> {
   const filePath = path.join(process.cwd(), 'public', 'audio', `${filename}.mp3`);
 
-  // ✅ Ensure the 'public/audio' folder exists
   const audioDir = path.dirname(filePath);
   if (!existsSync(audioDir)) {
     mkdirSync(audioDir, { recursive: true });
@@ -22,7 +21,7 @@ export async function generateVoiceover(script: string, filename: string): Promi
   const command = new SynthesizeSpeechCommand({
     OutputFormat: 'mp3',
     Text: script,
-    VoiceId: 'Matthew', // Change voice as desired
+    VoiceId: 'Matthew',
     Engine: 'neural',
     LanguageCode: 'en-US',
   });
@@ -32,8 +31,8 @@ export async function generateVoiceover(script: string, filename: string): Promi
   if (response.AudioStream) {
     const buffer = await response.AudioStream.transformToByteArray();
     writeFileSync(filePath, Buffer.from(buffer));
-    console.log(`🎙️ Voiceover saved to ${filePath}`);
-    return `/audio/${filename}.mp3`; // Relative path for browser
+    console.log(`🎙 Voiceover saved to ${filePath}`);
+    return `/audio/${filename}.mp3`;
   } else {
     throw new Error('Failed to generate audio stream');
   }
