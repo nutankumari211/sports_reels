@@ -10,7 +10,7 @@ const s3 = new S3Client({
 });
 
 const BUCKET_NAME = process.env.S3_BUCKET_NAME!;
-const REELS_PREFIX = 'reels/';
+const REELS_PREFIX = 'new_reels/';
 
 export async function GET() {
   try {

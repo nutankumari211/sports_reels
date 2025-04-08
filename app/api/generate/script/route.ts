@@ -7,26 +7,21 @@ import { createReel } from '@/lib/createReels';
 
 export async function POST(req: NextRequest) {
   try {
-    const { playerName, sport, team, country, traits } = await req.json();
+    const { playerName, sport } = await req.json();
 
     // Generate all assets
     const script = await generateScript(playerName, sport || 'football');
     const fileName = playerName.toLowerCase().replace(/\s+/g, '-');
     const voiceoverPath = await generateVoiceover(script, fileName);
-    const visuals = await fetchVisuals({
-      playerName,
-      sport: sport || 'football',
-      team,
-      country,
-      traits,
-    });
+    const visuals = await fetchVisuals({ playerName });
+
 
     // Calculate duration and generate reel
     const duration = estimateDuration(script);
     const reelPath = await createReel({
       playerName,
       audioPath: voiceoverPath,
-      imagePaths: visuals.huggingFaceImages, // or combine all sources
+      imagePaths: visuals.allImages,
     });
 
     return NextResponse.json({

@@ -1,0 +1,57 @@
+
+# POST /api/generate/script
+
+Generates a reel by creating a script, voiceover, and visuals, then compiles them into a video.
+
+# Request Body (JSON)
+{
+  "playerName": "Virat Kohli",
+  "sport": "cricket" // Optional (defaults to 'football')
+}
+
+# Workflow
+1. generateScript – Generates a short script about the player.
+2. generateVoiceover – Converts the script into an audio file.
+3. fetchVisuals – Fetches images relevant to the player.
+4. estimateDuration – Estimates duration of the reel based on script.
+5. createReel – Combines voiceover + visuals into a vertical video reel.
+6. Uploads reel to S3, then responds with all generated asset URLs.
+
+# Response
+{
+  "script": "Virat Kohli is one of the finest cricketers...",
+  "voiceoverPath": "/public/audio/virat-kohli.mp3",
+  "visuals": {
+    "allImages": ["/images/Virat Kohli/1.jpg", "/images/Virat Kohli/2.jpg", "..."]
+  },
+  "reelPath": "https://your-bucket.s3.region.amazonaws.com/reels/virat-kohli.mp4"
+}
+
+# Error Response
+{
+  "error": "Failed to generate content"
+}
+
+-------------------------------------------
+#GET /api/reels
+
+Fetches all generated reels from S3 bucket under the reels/ prefix.
+
+# Response
+[
+  {
+    "playerName": "Virat Kohli",
+    "videoUrl": "https://your-bucket.s3.region.amazonaws.com/reels/virat-kohli.mp4",
+    "s3Key": "reels/virat-kohli.mp4"
+  },
+  {
+    "playerName": "Lionel Messi",
+    "videoUrl": "https://your-bucket.s3.region.amazonaws.com/reels/lionel-messi.mp4",
+    "s3Key": "reels/lionel-messi.mp4"
+  }
+]
+
+# Error Response
+{
+  "error": "Could not fetch reels"
+}

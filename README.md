@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Overview
+This project auto-generates short-form video reels (like TikTok/Instagram Reels) featuring famous sports players. It uses AI to generate scripts and voiceovers, then compiles everything into a vertical video with FFmpeg and serves it through a smooth-scrolling mobile-optimized UI in Next.js.
 
-## Getting Started
+How to use -> 
+1. npm install
+2. npm run dev
 
-First, run the development server:
+# Technical Breakdown
+1. Frontend (Next.js + Tailwind CSS)
+Built with Next.js App Router.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Client-side rendering for the reel feed.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+IntersectionObserver is used to:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Auto-play videos when they’re in view.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pause videos when scrolled out of view.
 
-## Learn More
+Uses Tailwind CSS for responsive, mobile-first UI.
 
-To learn more about Next.js, take a look at the following resources:
+Video layout mimics TikTok with a vertical 9:16 aspect ratio.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Backend (Next.js API Routes)
+/api/generate/script: Triggers the AI pipeline to:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Generate a script using an AI model (e.g., Groq).
 
-## Deploy on Vercel
+--- Convert script to voiceover using gTTS (Google Text-to-Speech).
+--- Create a vertical reel video using FFmpeg.
+--- Upload the final reel to Amazon S3.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+/api/reels: Fetches .mp4 URLs from S3 and sends them to the frontend.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. AI & Automation
+Script Generation: Done via Groq (or OpenAI) using the player's name and sport as input.
+
+Voiceover: Converts the script into speech using Google TTS (gTTS).
+
+# Video Compilation:
+
+FFmpeg creates a vertical 720x1280 .mp4 video.
+
+The voiceover is used as the audio track.
+
+The video matches the duration of the voiceover.
+
+4. Storage & Hosting
+Amazon S3 is used to store and serve the final reel videos.
+
+The app uses @aws-sdk/client-s3 to fetch reel metadata securely.
+
+5. Playback Optimization
+Videos are lazy-loaded.
+
+Auto-play begins when ~80% of the video enters the viewport.
+
+All videos are muted, autoplay-enabled, and looped for mobile-friendly UX.
+
