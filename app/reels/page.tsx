@@ -69,7 +69,6 @@ export default function ReelPage() {
           className="relative h-screen snap-start flex items-center justify-center"
         >
           <video
-            loading="lazy"
             data-src={reel.reelUrl}
             controls
             autoPlay
