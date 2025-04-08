@@ -1,3 +1,5 @@
+# Deployed LInk -https://sports-reels-ozuh.vercel.app/
+
 # Project Overview
 This project auto-generates short-form video reels (like TikTok/Instagram Reels) featuring famous sports players. It uses AI to generate scripts and voiceovers, then compiles everything into a vertical video with FFmpeg and serves it through a smooth-scrolling mobile-optimized UI in Next.js.
 
